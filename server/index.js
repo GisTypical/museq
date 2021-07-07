@@ -50,6 +50,7 @@ app.post("/playlist", (req, res) => {
   };
   exec();
   res.json({ message: "Playlist fino mano" });
+  res.json({ message: "Playlist fino mano" });
 });
 
 app.get("/playlist", (req, res) => {
