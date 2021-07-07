@@ -6,12 +6,12 @@ const User = require("./models/user");
 const Album = require("./models/album");
 const Playlist = require("./models/playlist");
 
-mongoose.connect("mongodb://localhost:27017/museq", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect("mongodb://localhost:27017/museq", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
