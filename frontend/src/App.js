@@ -12,7 +12,6 @@ function App() {
   return (
     <div className="App">
       <p>Las cosas son como son ya yo lo dije</p>
-      <input type="button"></input>
     </div>
   );
 }

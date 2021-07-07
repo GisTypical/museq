@@ -22,7 +22,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/album", (req, res) => {
-  let a = [];
   const exec = async () => {
     const album = new Album({
       name: req.body.name,
