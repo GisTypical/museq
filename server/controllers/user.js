@@ -4,10 +4,7 @@ const crypto = require("crypto");
 const signup = async (req, res) => {
   try {
     const { name, last_name, username, password } = req.body;
-    // Check valid username
-    if (/\s+/.test(username))
-      return res.status(409).json({ message: "Username not valid" });
-
+    console.log(name);
     // Check if username exists
     const result = await User.countDocuments({ username: username }).exec();
     if (result)

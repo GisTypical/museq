@@ -1,17 +1,14 @@
-import { useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
+import Landing from "./components/Landing";
+const queryClient = new QueryClient();
 function App() {
-  useEffect(() => {
-    const fetch = async () => {
-      const data = await axios.get("/test");
-      console.log(`Se ha recibido: ${JSON.stringify(data.data)}`);
-    };
-    fetch();
-  }, []);
   return (
-    <div className="App">
-      <p>Las cosas son como son ya yo lo dije</p>
+    <div className="h-full bg-russianviolet text-white text-opacity-90">
+      <QueryClientProvider client={queryClient}>
+        <Landing></Landing>
+      </QueryClientProvider>
     </div>
   );
 }
