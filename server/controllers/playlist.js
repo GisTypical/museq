@@ -11,7 +11,7 @@ const playlistCreate = async (req, res) => {
     await playlist.save();
     res.status(200).json({ message: "Playlist created successfully" });
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json(error);
   }
 };
 
@@ -22,7 +22,7 @@ const playlistGet = async (req, res) => {
     );
     res.status(200).json(result);
   } catch (error) {
-    console.error(error);
+    res.status(500).json(error);
   }
 };
 

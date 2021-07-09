@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const userRouter = require("./routes/user");
 const playlistRouter = require("./routes/playlist");
@@ -15,12 +16,13 @@ mongoose.connect("mongodb://localhost:27017/museq", {
 const PORT = process.env.PORT || 5000;
 const app = express();
 app.listen(PORT, () => {
+  console.log(path.resolve(__dirname, "../frontend/build"));
   console.log(`Listening at port ${PORT}`);
 });
 
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(express.static("static"));
+app.use(express.static(path.resolve(__dirname, "../frontend/build")));
 
 app.use("/api/album", albumRouter);
 app.use("/api/playlist", playlistRouter);
