@@ -7,15 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-prebuild": "npm i -f",
     "heroku-postbuild": "npm run build",
-    "start": "concurrently \"cd frontend && npm install && npm run build\" \"cd server && npm start\""
+    "start": "cd server && npm start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "engines": {
     "node": "14.16.0"
-  },
-  "dependencies": {
-    "concurrently": "^6.2.0"
   }
 }

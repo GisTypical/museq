@@ -22,7 +22,7 @@ app.listen(PORT, () => {
 
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(express.static(path.resolve(__dirname, "../frontend/build")));
+app.use(express.static("static"));
 
 app.use("/api/album", albumRouter);
 app.use("/api/playlist", playlistRouter);
