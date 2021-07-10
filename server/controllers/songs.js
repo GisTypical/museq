@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const Song = require("../models/song");
 const createSong = async (req, res) => {
   try {
@@ -32,10 +33,8 @@ const getSongs = async (req, res) => {
 };
 
 const streamSong = async (req, res) => {
-  console.log(req.file);
   try {
     const song = await Song.findById(req.params.id);
-    console.log(song);
 
     // Verify if theres a range for the audio
     const range = req.headers.range;
@@ -43,8 +42,8 @@ const streamSong = async (req, res) => {
       res.status(400).json({ message: "No range specified" });
     }
 
-    const audioPath = song.path;
-    const audioSize = fs.statSync(song.path).size;
+    const audioPath = path.resolve(__dirname, "../", song.path);
+    const audioSize = fs.statSync(audioPath).size;
 
     // Set chunk size and start & end of audio
     // Example: "bytes={start}-" without end
@@ -63,6 +62,7 @@ const streamSong = async (req, res) => {
 
     res.writeHead(206, headers);
 
+    console.log(audioPath);
     // create audio stream for each chunk
     const audioStream = fs.createReadStream(audioPath, { start, end });
 
