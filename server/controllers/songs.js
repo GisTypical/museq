@@ -32,6 +32,7 @@ const getSongs = async (req, res) => {
 };
 
 const streamSong = async (req, res) => {
+  console.log(req.file);
   try {
     const song = await Song.findById(req.params.id);
     console.log(song);
