@@ -57,7 +57,7 @@ const Login = () => {
           {/* Status messages */}
           {mutation.isLoading && (
             <p className="text-sm text-center">
-              Verificando datos, porfavor espere...
+              Verificando datos, por favor espere...
             </p>
           )}
           {mutation.isError && mutation.error.response.status === 401 && (

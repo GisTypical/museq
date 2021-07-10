@@ -8,10 +8,14 @@ const playlistRouter = require("./routes/playlist");
 const songRouter = require("./routes/song");
 const albumRouter = require("./routes/album");
 
-mongoose.connect("mongodb://localhost:27017/museq", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const PASS = process.env.MONGODBPASS;
+mongoose.connect(
+  `mongodb+srv://gistypical:${PASS}@cluster0.1hgxz.mongodb.net/museq?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const PORT = process.env.PORT || 5000;
 const app = express();
