@@ -1,4 +1,6 @@
 import axios from "axios";
-export const getSongs = () => {
-  return axios.get("/api/song");
+
+export const getSongs = async () => {
+  const response = await axios.get("/api/song");
+  return response.data;
 };

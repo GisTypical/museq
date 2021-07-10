@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const signup = async (req, res) => {
   try {
     const { name, last_name, username, password } = req.body;
-    console.log(name);
+
     // Check if username exists
     const result = await User.countDocuments({ username: username }).exec();
     if (result)
@@ -30,6 +30,11 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
   try {
+    if (req.session.loggedin) {
+      return res
+        .status(200)
+        .json({ message: "Login successful", username: req.session.username });
+    }
     const { username, password } = req.body;
 
     let hashedPass;
@@ -44,7 +49,12 @@ const login = async (req, res) => {
     if (!response) {
       return res.status(401).json({ message: "Wrong credentials" });
     }
-    res.status(200).json({ message: "Login successful" });
+
+    req.session.loggedin = true;
+    req.session.username = username;
+    res
+      .status(200)
+      .json({ message: "Login successful", username: req.session.username });
   } catch (error) {
     res.status(500).json(error);
   }

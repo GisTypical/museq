@@ -6,7 +6,8 @@ import { loginUser } from "../utils/user-api";
 const Login = () => {
   const history = useHistory();
   const mutation = useMutation(loginUser, {
-    onSuccess: () => {
+    onSuccess: (response) => {
+      console.log(response.data);
       history.push("/home");
     },
   });

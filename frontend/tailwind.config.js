@@ -16,6 +16,9 @@ module.exports = {
         selectiveyellow: "#FFB700",
         hotmagenta: "#FF16CE",
       },
+      gridTemplateColumns: {
+        sidebar: "minmax(250px, 25%) 1fr",
+      },
     },
   },
   variants: {
